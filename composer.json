@@ -1,0 +1,10 @@
+{
+    "name": "hjmsw/sendgrid-event-api",
+    "authors": [
+        {
+            "name": "James Harding",
+            "email": "james@jamesharding.me"
+        }
+    ],
+    "require": {}
+}
