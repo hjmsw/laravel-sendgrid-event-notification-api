@@ -3,17 +3,26 @@
 namespace Hjmsw\SendGridEventApi;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
 
 class SendGridEventController extends Controller
 {
-    public function events(){
-        return response()->json(Event::all()->toArray());
+    public function events($type){
+
+        if ($type === 'all') {
+            return response()->json(Event::all()->toArray());
+        } else {
+            return response()->json(
+                Event::where('event', $type)->get()->toArray()
+            );
+        }
+
     }
 
     public function processEvents(Request $request) {
         $events_list = json_decode($request->getContent());
+
+        $saved = 0;
 
         foreach($events_list as $e) {
             $event = new Event();
@@ -26,14 +35,9 @@ class SendGridEventController extends Controller
             $event->sg_message_id = $e->sg_message_id;
             $event->created_at = $e->timestamp;
 
-            $event->save();
+            if ($event->save()) $saved++;
         }
 
-        return response()->json(1);
-
+        return response()->json(['saved' => $saved]);
     }
-
-
-
-
 }

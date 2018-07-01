@@ -1,4 +1,11 @@
 <?php
 
-Route::get('events/', 'Hjmsw\SendGridEventApi\SendGridEventController@events');
-Route::post('events/', 'Hjmsw\SendGridEventApi\SendGridEventController@processEvents');
+Route::get(
+    'events/{type}',
+    'Hjmsw\SendGridEventApi\SendGridEventController@events'
+);
+
+Route::post(
+    'events/',
+    'Hjmsw\SendGridEventApi\SendGridEventController@processEvents'
+);
