@@ -1,7 +1,7 @@
 <?php
 
 Route::get(
-    'events/{type}',
+    'events/',
     'Hjmsw\SendGridEventApi\SendGridEventController@events'
 );
 

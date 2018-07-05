@@ -2,9 +2,21 @@
 
 namespace Hjmsw\SendGridEventApi;
 
-use Illuminate\Database\Eloquent\Model;
+use \Illuminate\Database\Eloquent\Model as Eloquent;
 
-class Event extends Model
+class Event extends Eloquent
 {
     protected $table = 'events';
+
+    public function scopeOfType($query, $type) {
+        return $query->where('event', $type);
+    }
+
+    public function scopeAllTypes($query) {
+        return $query->whereNotNull('event');
+    }
+
+    public function scopeEmail($query, $email) {
+        return $query->where('email', $email);
+    }
 }

@@ -7,15 +7,22 @@ use App\Http\Controllers\Controller;
 
 class SendGridEventController extends Controller
 {
-    public function events($type){
+    public function events(Request $request){
 
-        if ($type === 'all') {
-            return response()->json(Event::all()->toArray());
+        if ($request->has('type')) {
+            $events = Event::ofType($request->get('type'));
         } else {
-            return response()->json(
-                Event::where('event', $type)->get()->toArray()
-            );
+            $events = Event::allTypes();
         }
+
+        if ($request->has('email')) {
+            $events->email($request->get('email'));
+        }
+
+
+        return response()->json($events->get()->toArray());
+
+
 
     }
 
