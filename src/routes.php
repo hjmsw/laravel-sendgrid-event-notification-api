@@ -2,10 +2,10 @@
 
 Route::get(
     'events/',
-    'Hjmsw\SendGridEventApi\SendGridEventController@events'
+    'Hjmsw\SendGridEventApi\Controllers\SendGridEventController@events'
 );
 
 Route::post(
     'events/',
-    'Hjmsw\SendGridEventApi\SendGridEventController@processEvents'
+    'Hjmsw\SendGridEventApi\Controllers\SendGridEventController@processEvents'
 );

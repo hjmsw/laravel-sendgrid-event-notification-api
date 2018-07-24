@@ -1,6 +1,6 @@
 <?php
 
-namespace Hjmsw\SendGridEventApi;
+namespace Hjmsw\SendGridEventApi\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -13,8 +13,8 @@ class SendGridEventProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->loadRoutesFrom(__DIR__ . '/routes.php');
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadRoutesFrom(__DIR__ . '/../routes.php');
+        $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
     }
 
     /**
@@ -24,6 +24,6 @@ class SendGridEventProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->make('Hjmsw\SendGridEventApi\SendGridEventController');
+        $this->app->make('Hjmsw\SendGridEventApi\Controllers\SendGridEventController');
     }
 }

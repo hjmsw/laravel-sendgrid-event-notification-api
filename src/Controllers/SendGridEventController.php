@@ -1,9 +1,10 @@
 <?php
 
-namespace Hjmsw\SendGridEventApi;
+namespace Hjmsw\SendGridEventApi\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Hjmsw\SendGridEventApi\Models\Event;
 
 class SendGridEventController extends Controller
 {
@@ -18,12 +19,8 @@ class SendGridEventController extends Controller
         if ($request->has('email')) {
             $events->email($request->get('email'));
         }
-
-
+        
         return response()->json($events->get()->toArray());
-
-
-
     }
 
     public function processEvents(Request $request) {

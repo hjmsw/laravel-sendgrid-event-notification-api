@@ -1,6 +1,6 @@
 <?php
 
-namespace Hjmsw\SendGridEventApi;
+namespace Hjmsw\SendGridEventApi\Models;
 
 use \Illuminate\Database\Eloquent\Model as Eloquent;
 
