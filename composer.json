@@ -6,6 +6,7 @@
             "email": "james@jamesharding.me"
         }
     ],
+    "license": "MIT",
     "require": {},
     "autoload": {
       "psr-4": {

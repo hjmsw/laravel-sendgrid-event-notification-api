@@ -13,7 +13,7 @@ To get the latest version, simply require the project using [Composer](https://g
 $ composer require hjmsw/sendgrid-event-api
 ```
 
-Database migrations are included in ```database/migrations```, to run them, execute:
+Database migrations are included in ```database/migrations```. To run them, execute:
 
 ```bash
 $ php artisan migrate
