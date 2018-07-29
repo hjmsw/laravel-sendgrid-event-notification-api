@@ -15,6 +15,10 @@ class SendGridEventProvider extends ServiceProvider
     {
         $this->loadRoutesFrom(__DIR__ . '/../routes.php');
         $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
+
+        $this->publishes([
+            __DIR__.'/../../config/config.php' => config_path('sendgrid_event_api.php'),
+        ]);
     }
 
     /**
