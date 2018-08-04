@@ -19,8 +19,14 @@ class SendGridEventController extends Controller
         if ($request->has('email')) {
             $events->email($request->get('email'));
         }
+
+        if ($request->has('limit')) {
+            $events = $events->simplePaginate($request->get('limit'));
+        } else {
+            $events = $events->get();
+        }
         
-        return response()->json($events->get()->toArray());
+        return $events->toArray();
     }
 
     public function processEvents(Request $request) {
@@ -42,6 +48,6 @@ class SendGridEventController extends Controller
             if ($event->save()) $saved++;
         }
 
-        return response()->json(['saved' => $saved]);
+        return ['saved' => $saved];
     }
 }
